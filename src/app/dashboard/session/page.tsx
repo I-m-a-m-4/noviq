@@ -30,6 +30,18 @@ export default function SessionPage() {
 
   useEffect(() => {
     if (audioRef.current) {
+      audioRef.current.load();
+      if (isPlaying) {
+        audioRef.current.play().catch(e => {
+            console.error(e);
+            setIsPlaying(false);
+        });
+      }
+    }
+  }, [reciter, verse?.verse_key]);
+
+  useEffect(() => {
+    if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.play().catch(e => {
             console.error(e);
@@ -39,7 +51,7 @@ export default function SessionPage() {
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, reciter]);
+  }, [isPlaying]);
 
   const toggleAudio = () => setIsPlaying(!isPlaying);
 

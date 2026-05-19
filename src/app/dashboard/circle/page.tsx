@@ -47,6 +47,14 @@ export default function CirclePage() {
       setMembers(prev => prev.map(m => m.id === 1 ? { ...m, name: savedName } : m));
     }
     
+    fetch('/api/user/streak')
+      .then(res => res.json())
+      .then(data => {
+        const currentStreak = data.streak || 0;
+        setMembers(prev => prev.map(m => m.id === 1 ? { ...m, streak: currentStreak } : m));
+      })
+      .catch(() => {});
+    
     const savedReflection = localStorage.getItem('userReflection');
     if (savedReflection) {
         const nameToUse = savedName || "Bello Imam";

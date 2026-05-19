@@ -18,12 +18,23 @@ const NAV_ITEMS = [
 export function DashboardNav({ isCollapsed = false }: { isCollapsed?: boolean }) {
   const pathname = usePathname();
   const [name, setName] = React.useState('Bello Imam');
+  const [streak, setStreak] = React.useState(0);
 
   React.useEffect(() => {
     const savedName = localStorage.getItem('userName');
     if (savedName) {
       setName(savedName);
     }
+
+    fetch('/api/user/streak')
+      .then(res => res.json())
+      .then(data => {
+        setStreak(data.streak || 0);
+      })
+      .catch(() => {
+        const savedStreak = localStorage.getItem('userStreak');
+        if (savedStreak) setStreak(parseInt(savedStreak));
+      });
   }, []);
 
   const getInitials = (nameStr: string) => {
@@ -89,7 +100,7 @@ export function DashboardNav({ isCollapsed = false }: { isCollapsed?: boolean })
           {!isCollapsed && (
             <div className="flex-1 overflow-hidden">
               <p className="text-xs font-medium text-foreground truncate">{name}</p>
-              <p className="text-[10px] text-muted-foreground truncate">12 Day Streak</p>
+              <p className="text-[10px] text-muted-foreground truncate">{streak} Day Streak</p>
             </div>
           )}
         </div>

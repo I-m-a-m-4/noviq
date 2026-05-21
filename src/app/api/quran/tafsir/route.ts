@@ -28,24 +28,24 @@ export async function GET(request: Request) {
     try {
       const token = await getAccessToken();
       const response = await fetch(
-        `${BASE_URL}/verses/by_key/${verseKey}?tafsirs=${tafsirId}&fields=text_uthmani`,
+        `${BASE_URL}/tafsirs/${tafsirId}/by_ayah/${verseKey}`,
         {
           headers: {
             'x-auth-token': token,
             'x-client-id': process.env.QF_CLIENT_ID || '',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
           },
         }
       );
 
       if (response.ok) {
         const data = await response.json();
-        const tafsirs = data.verse?.tafsirs || [];
-        if (tafsirs.length > 0) {
+        if (data.tafsir?.text) {
           return NextResponse.json({
             verseKey,
             tafsirId,
             tafsirName: tafsirSlug === 'maarif' ? "Ma'arif al-Qur'an" : 'Ibn Kathir (Abridged)',
-            text: tafsirs[0].text || '',
+            text: data.tafsir.text,
           });
         }
       }
@@ -55,35 +55,25 @@ export async function GET(request: Request) {
 
     // 2. Backup: public Quran.com API
     try {
-      const [chapter, verse] = verseKey.split(':');
       const backupUrls = [
-        `https://api.quran.com/api/v4/tafsirs/${tafsirId}/by_ayah/${chapter}/${verse}`,
-        `https://api.quran.com/api/v4/verses/by_key/${verseKey}?tafsirs=${tafsirId}&fields=text_uthmani`,
+        `https://api.quran.com/api/v4/tafsirs/${tafsirId}/by_ayah/${verseKey}`,
       ];
 
       for (const url of backupUrls) {
-        const backupRes = await fetch(url);
+        const backupRes = await fetch(url, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+          }
+        });
         if (backupRes.ok) {
           const backupData = await backupRes.json();
 
-          // Handle /tafsirs/{id}/by_ayah format
           if (backupData.tafsir?.text) {
             return NextResponse.json({
               verseKey,
               tafsirId,
               tafsirName: tafsirSlug === 'maarif' ? "Ma'arif al-Qur'an" : 'Ibn Kathir (Abridged)',
               text: backupData.tafsir.text,
-            });
-          }
-
-          // Handle /verses/by_key?tafsirs= format
-          const tafsirs = backupData.verse?.tafsirs || [];
-          if (tafsirs.length > 0 && tafsirs[0].text) {
-            return NextResponse.json({
-              verseKey,
-              tafsirId,
-              tafsirName: tafsirSlug === 'maarif' ? "Ma'arif al-Qur'an" : 'Ibn Kathir (Abridged)',
-              text: tafsirs[0].text,
             });
           }
         }

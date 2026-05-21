@@ -13,7 +13,7 @@ const AUTH_URL = process.env.QF_ENV === 'production'
 
 let cachedToken: { token: string; expiresAt: number } | null = null;
 
-async function getAccessToken() {
+export async function getAccessToken() {
   if (cachedToken && cachedToken.expiresAt > Date.now()) {
     return cachedToken.token;
   }

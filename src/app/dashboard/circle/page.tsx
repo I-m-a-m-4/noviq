@@ -184,6 +184,7 @@ export default function CirclePage() {
     const savedName = localStorage.getItem('userName');
     const userEmail = localStorage.getItem('userEmail') || 'bello@example.com';
     setEmail(userEmail);
+    setMyUsername(userEmail.split('@')[0].toLowerCase().replace(/[^a-z0-9_]/g, ''));
     if (savedName) {
       setDisplayName(savedName);
     }
@@ -289,15 +290,16 @@ export default function CirclePage() {
   };
 
   const handleShareCircle = () => {
-    if (navigator.clipboard && myUsername) {
-      navigator.clipboard.writeText(myUsername);
+    const activeUsername = myUsername || email.split('@')[0].toLowerCase().replace(/[^a-z0-9_]/g, '') || 'bello';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(activeUsername);
       triggerAlert(
         "Copied to Clipboard!",
-        `Your username "@${myUsername}" has been copied! Share this with your friends so they can add you to their circle.`,
+        `Your username "@${activeUsername}" has been copied! Share this with your friends so they can add you to their circle.`,
         'success'
       );
     } else {
-      triggerAlert("Your Username", `Your username is: @${myUsername}. Share it to invite friends.`, 'info');
+      triggerAlert("Your Username", `Your username is: @${activeUsername}. Share it to invite friends.`, 'info');
     }
   };
 

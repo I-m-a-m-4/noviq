@@ -52,6 +52,47 @@ export default function SessionPage() {
   // Translation language preference (synced with top bar)
   const [translationId, setTranslationId] = useState(131); // Default: Saheeh International
 
+  // Tafsir exegesis state hooks
+  const [expandedTafsirs, setExpandedTafsirs] = useState<Record<string, { text: string; loading: boolean; error: string | null }>>({});
+  const [visibleTafsirKeys, setVisibleTafsirKeys] = useState<Record<string, boolean>>({});
+
+  const fetchTafsir = async (verseKey: string) => {
+    if (visibleTafsirKeys[verseKey]) {
+      setVisibleTafsirKeys(prev => ({ ...prev, [verseKey]: false }));
+      return;
+    }
+
+    setVisibleTafsirKeys(prev => ({ ...prev, [verseKey]: true }));
+
+    if (expandedTafsirs[verseKey]?.text) return;
+
+    setExpandedTafsirs(prev => ({
+      ...prev,
+      [verseKey]: { text: "", loading: true, error: null }
+    }));
+
+    try {
+      const res = await fetch(`/api/quran/tafsir?verseKey=${encodeURIComponent(verseKey)}&tafsir=ibn-kathir`);
+      const data = await res.json();
+      if (res.ok && data.text) {
+        setExpandedTafsirs(prev => ({
+          ...prev,
+          [verseKey]: { text: data.text, loading: false, error: null }
+        }));
+      } else {
+        setExpandedTafsirs(prev => ({
+          ...prev,
+          [verseKey]: { text: "", loading: false, error: data.error || "Failed to load Tafsir." }
+        }));
+      }
+    } catch (err) {
+      setExpandedTafsirs(prev => ({
+        ...prev,
+        [verseKey]: { text: "", loading: false, error: "Network error loading Tafsir." }
+      }));
+    }
+  };
+
   const generateSequentialKeys = (verseKey: string): string[] => {
     const [chapterStr, verseStr] = verseKey.split(':');
     const chapter = parseInt(chapterStr);
@@ -496,11 +537,42 @@ export default function SessionPage() {
               </div>
 
               {/* English translation */}
-              <div className="pt-3 border-t border-border/40">
+              <div className="pt-3 border-t border-border/40 space-y-3">
                 <p 
                   className="text-muted-foreground text-sm font-medium italic leading-relaxed text-balance"
                   dangerouslySetInnerHTML={{ __html: verse.translations?.[0]?.text || "" }}
                 />
+                
+                {/* Tafsir Accordion Button */}
+                <div className="pt-1 flex items-center justify-between">
+                  <button
+                    onClick={() => fetchTafsir(verse.verse_key)}
+                    className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-extrabold text-primary hover:text-primary/80 transition-all hover:translate-x-0.5"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    {visibleTafsirKeys[verse.verse_key] ? "Hide Tafsir" : "Read Tafsir (Ibn Kathir)"}
+                  </button>
+                </div>
+
+                {/* Tafsir Content panel */}
+                {visibleTafsirKeys[verse.verse_key] && (
+                  <div className="p-4 rounded-lg bg-black/10 dark:bg-white/5 border border-border/30 text-xs text-foreground/80 leading-relaxed font-sans space-y-2 animate-in fade-in slide-in-from-top-1 duration-200">
+                    <p className="font-extrabold text-[9px] uppercase tracking-wider text-muted-foreground">Tafsir Ibn Kathir</p>
+                    {expandedTafsirs[verse.verse_key]?.loading ? (
+                      <div className="flex items-center gap-2 py-2">
+                        <Loader2 className="w-3 h-3 animate-spin text-primary" />
+                        <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">Loading Exegesis...</span>
+                      </div>
+                    ) : expandedTafsirs[verse.verse_key]?.error ? (
+                      <p className="text-red-500 font-medium">{expandedTafsirs[verse.verse_key].error}</p>
+                    ) : (
+                      <div 
+                        className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground text-[12px] leading-relaxed font-medium"
+                        dangerouslySetInnerHTML={{ __html: expandedTafsirs[verse.verse_key]?.text || "" }}
+                      />
+                    )}
+                  </div>
+                )}
               </div>
 
             </CardContent>

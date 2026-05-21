@@ -51,7 +51,7 @@ export default function DashboardPage() {
     const savedStreak = localStorage.getItem('userStreak') || '0';
 
     // Populate initial local data immediately
-    setUserData(prev => ({
+    setUserData((prev: any) => ({
       ...prev,
       name: savedName,
       niyyah: savedNiyyah,
@@ -62,7 +62,7 @@ export default function DashboardPage() {
     fetch(`/api/user/streak?email=${encodeURIComponent(userEmail)}`)
       .then(res => res.json())
       .then(data => {
-        setUserData(prev => ({ ...prev, streak: data.streak || 0 }));
+        setUserData((prev: any) => ({ ...prev, streak: data.streak || 0 }));
         localStorage.setItem('userStreak', String(data.streak || 0));
       })
       .catch(err => console.error("Streak fetch error:", err));
@@ -105,7 +105,7 @@ export default function DashboardPage() {
     }
 
     if (customVerse) {
-      setUserData(prev => ({
+      setUserData((prev: any) => ({
         ...prev,
         dailyVerse: customVerse.arabicVerse,
         dailyTranslation: customVerse.translation
@@ -113,7 +113,7 @@ export default function DashboardPage() {
       setIsDailyVerseLoading(false);
     } else if (cachedVerse && cachedVerseDate === todayStr) {
       const parsed = JSON.parse(cachedVerse);
-      setUserData(prev => ({
+      setUserData((prev: any) => ({
         ...prev,
         dailyVerse: parsed.dailyVerse,
         dailyTranslation: parsed.dailyTranslation
@@ -128,7 +128,7 @@ export default function DashboardPage() {
             ? data.translations[0].text.replace(/<[^>]*>/g, '') 
             : "And establish prayer and give zakah and bow with those who bow [in worship and obedience].";
           
-          setUserData(prev => ({
+          setUserData((prev: any) => ({
             ...prev,
             dailyVerse: arabic,
             dailyTranslation: translation
@@ -467,3 +467,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+

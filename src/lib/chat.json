@@ -1,0 +1,20 @@
+[
+  {
+    "id": "msg_1",
+    "email": "sarah@example.com",
+    "name": "Sarah",
+    "username": "sarah",
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=sarah",
+    "message": "Salam everyone! Let’s keep up our consistency today.",
+    "timestamp": "2026-05-20T20:04:30.580Z"
+  },
+  {
+    "id": "msg_2",
+    "email": "omar@example.com",
+    "name": "Omar",
+    "username": "omar",
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=omar",
+    "message": "Wa Alaykum Assalam! Completed my daily session early today.",
+    "timestamp": "2026-05-20T20:34:30.583Z"
+  }
+]

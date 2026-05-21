@@ -1,13 +1,44 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Zap, Target, ArrowRight, Play, CheckCircle2, Clock, Loader2, Calendar, Inbox, BookOpen, Users } from 'lucide-react';
 import Link from 'next/link';
 import { getSurahName } from '@/lib/quran-api';
 
+// Returns the audio URL for a given verse key and reciter
+function getAudioUrl(verseKey: string, reciter: string = 'Alafasy_128kbps') {
+  if (!verseKey) return "";
+  const [chapter, v] = verseKey.split(':');
+  return `https://everyayah.com/data/${reciter}/${chapter.padStart(3, '0')}${v.padStart(3, '0')}.mp3`;
+}
+
 export default function DashboardPage() {
+  // Audio playback state for inspired verses
+  const [playingVerseKey, setPlayingVerseKey] = useState<string | null>(null);
+  const [reciter, setReciter] = useState('Alafasy_128kbps');
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlayToggle = (verseKey: string) => {
+    if (!audioRef.current) return;
+    if (playingVerseKey === verseKey) {
+      if (audioRef.current.paused) {
+        audioRef.current.play().catch(() => {});
+      } else {
+        audioRef.current.pause();
+        setPlayingVerseKey(null);
+      }
+    } else {
+      setPlayingVerseKey(verseKey);
+      audioRef.current.src = getAudioUrl(verseKey, reciter);
+      audioRef.current.load();
+      audioRef.current.play().catch(() => {
+        setPlayingVerseKey(null);
+      });
+    }
+  };
+
   const [userData, setUserData] = useState<any>({
     name: 'Bello Imam',
     niyyah: 'Spiritual Consistency',
@@ -231,12 +262,22 @@ export default function DashboardPage() {
                 <div className="space-y-3">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-secondary border border-border text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                     Quran Foundation Verified
+                    <button
+                      onClick={() => handlePlayToggle(userData.dailyVerseKey || '2:255')}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border border-border ml-2 ${playingVerseKey === (userData.dailyVerseKey || '2:255') ? 'bg-primary text-black scale-105 shadow-[0_0_15px_rgba(234,88,12,0.4)]' : 'bg-background text-muted-foreground hover:text-foreground hover:border-primary/50'}`}
+                      title={playingVerseKey === (userData.dailyVerseKey || '2:255') ? 'Pause recitation' : 'Play recitation'}
+                    >
+                      {playingVerseKey === (userData.dailyVerseKey || '2:255') ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="5,3 19,12 5,21 5,3"/></svg>
+                      )}
+                    </button>
                   </div>
                   <h2 className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed quran-text text-right mt-2" dir="rtl">{userData.dailyVerse}</h2>
                   {userData.dailyTranslation && (
-                    <p className="text-muted-foreground max-w-sm font-medium italic mt-2">"{userData.dailyTranslation}"</p>
+                    <p className="text-muted-foreground font-medium italic mt-2 w-full">"{userData.dailyTranslation}"</p>
                   )}
-                  <p className="text-muted-foreground max-w-sm font-medium mt-4">Your daily session is ready. Take 5 minutes to ground your soul before you start your afternoon.</p>
                 </div>
                 
                 <div className="flex items-center gap-6">
@@ -245,11 +286,8 @@ export default function DashboardPage() {
                       <Play className="mr-2 w-4 h-4 fill-current" /> Start Session
                     </Button>
                   </Link>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm font-bold bg-background px-4 py-2 rounded-lg border border-border">
-                    <Clock className="w-4 h-4" />
-                    <span>5 mins</span>
-                  </div>
                 </div>
+
               </div>
             )}
           </CardContent>
@@ -424,43 +462,72 @@ export default function DashboardPage() {
       </div>
 
       {/* 5 Dynamic Verses Section */}
+      {/* Inspired Verses for Reflection with audio and fallback translation */}
       {extraVerses && extraVerses.length > 0 && (
         <section className="space-y-4 pt-4">
           <div>
             <h2 className="text-xl font-bold text-foreground tracking-tight">Inspired Verses for Reflection</h2>
             <p className="text-muted-foreground text-xs mt-1">A curated flow of verses synced dynamically from the Quran Foundation API to guide your daily contemplation.</p>
           </div>
-          
+          {/* Hidden audio element for playback */}
+          <audio 
+            ref={audioRef} 
+            onEnded={() => setPlayingVerseKey(null)}
+            style={{ display: 'none' }}
+          />
           <div className="grid grid-cols-1 gap-3">
-            {extraVerses.slice(0, 2).map((verse, idx) => (
-              <Card key={verse.verse_key || idx} className="glass-panel hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-                <CardContent className="p-4 space-y-3 flex flex-col justify-between h-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-extrabold text-primary uppercase tracking-wider bg-primary/10 px-1.5 py-0.5 rounded">
-                      {getSurahName(verse.verse_key)} {verse.verse_key}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground font-medium">
-                      Verse {verse.id}
-                    </span>
-                  </div>
-                  
-                  <p className="quran-text text-sm md:text-base font-normal text-foreground text-right leading-loose py-2 mt-1" dir="rtl">
-                    {verse.text_uthmani}
-                  </p>
-                  
-                  {verse.translations && verse.translations[0] && verse.translations[0].text && (
+            {extraVerses.slice(0, 2).map((verse, idx) => {
+              // Find the first translation with text
+              const translationObj = verse.translations && Array.isArray(verse.translations)
+                ? verse.translations.find((t: any) => t && t.text)
+                : null;
+              // Fallback translation (example, can be improved)
+              const fallbackTranslation =
+                verse.verse_key === '2:153' ? 'O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.' :
+                verse.verse_key === '3:134' ? 'Who give, both in prosperity and adversity, who restrain their anger and pardon people—God loves those who do good.' :
+                null;
+              const translationText = translationObj?.text || fallbackTranslation;
+              // If no translation, do not show the card
+              if (!translationText) return null;
+              return (
+                <Card key={verse.verse_key || idx} className="glass-panel hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                  <CardContent className="p-4 space-y-3 flex flex-col justify-between h-full">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[9px] font-extrabold text-primary uppercase tracking-wider bg-primary/10 px-1.5 py-0.5 rounded">
+                        {getSurahName(verse.verse_key)} {verse.verse_key}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground font-medium">
+                        Verse {verse.id}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
+                      <button
+                        onClick={() => handlePlayToggle(verse.verse_key)}
+                        className={`w-9 h-9 rounded-full flex items-center justify-center transition-all border border-border ${playingVerseKey === verse.verse_key ? 'bg-primary text-black scale-105 shadow-[0_0_15px_rgba(234,88,12,0.4)]' : 'bg-background text-muted-foreground hover:text-foreground hover:border-primary/50'}`}
+                        title={playingVerseKey === verse.verse_key ? 'Pause recitation' : 'Play recitation'}
+                      >
+                        {playingVerseKey === verse.verse_key ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="5,3 19,12 5,21 5,3"/></svg>
+                        )}
+                      </button>
+                    </div>
+                    <p className="quran-text text-sm md:text-base font-normal text-foreground text-right leading-loose py-2" dir="rtl">
+                      {verse.text_uthmani}
+                    </p>
                     <div className="border-t border-border/50 pt-2 mt-auto">
                       <p 
                         className="text-muted-foreground text-[11px] md:text-xs font-medium italic leading-relaxed"
                         dangerouslySetInnerHTML={{ 
-                          __html: verse.translations[0].text 
+                          __html: translationText
                         }}
                       />
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </section>
       )}

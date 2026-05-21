@@ -50,5 +50,18 @@
     "username": "fatima",
     "circleMembers": [],
     "receivedNudges": []
+  },
+  {
+    "id": "user_1779329032279",
+    "name": "Belloimam431",
+    "email": "belloimam431@gmail.com",
+    "username": "belloimam431",
+    "niyyah": "Spiritual Consistency",
+    "goal": "Daily Quran Reading (5 mins)",
+    "streak": 0,
+    "completedToday": false,
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=belloimam431",
+    "circleMembers": [],
+    "receivedNudges": []
   }
 ]

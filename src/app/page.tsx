@@ -45,47 +45,107 @@ export default function LandingPage() {
     setLeadSubmitted(true);
   };
 
+  React.useEffect(() => {
+    // WebGL Canvas Background Mesh Logic
+    const canvas = document.getElementById('meshGL') as HTMLCanvasElement;
+    if (!canvas || !window.THREE) return;
+
+    const THREE = window.THREE;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 20;
+
+    const geometry = new THREE.PlaneGeometry(30, 30, 64, 64);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xe34a32,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.08
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    let animationFrameId: number;
+    const clock = new THREE.Clock();
+
+    const resize = () => {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height, false);
+    };
+    window.addEventListener('resize', resize);
+    resize();
+
+    const animate = () => {
+      const time = clock.getElapsedTime();
+      const pos = geometry.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        const u = pos.getX(i);
+        const v = pos.getY(i);
+        const z = Math.sin(u * 0.3 + time) * Math.cos(v * 0.3 + time) * 1.5;
+        pos.setZ(i, z);
+      }
+      pos.needsUpdate = true;
+      mesh.rotation.z = time * 0.02;
+
+      renderer.render(scene, camera);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#ECEDEE] text-[#232427] antialiased" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* PAGE SHELL */}
       <div className="max-w-[1440px] mx-auto px-2 sm:px-4 pt-2 sm:pt-4">
         
         {/* ================= HERO ================= */}
-        <section className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] bg-[#0E0F11] text-white shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_20px_60px_-30px_rgba(0,0,0,0.85)] min-h-[90svh] flex flex-col">
+        <section className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] bg-[#F4F5F5] text-[#232427] shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_20px_60px_-30px_rgba(35,36,39,0.25)] min-h-[95svh] flex flex-col">
+          <canvas id="meshGL" className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-60"></canvas>
           
           {/* Atmosphere - Bloom effects */}
-          <div className="pointer-events-none absolute -right-40 top-0 h-[720px] w-[720px] rounded-full opacity-70 blur-3xl transition-transform duration-700 ease-out" style={{ background: 'radial-gradient(circle at 55% 45%, rgba(249,115,22,0.35), rgba(217,70,239,0.12) 40%, rgba(14,15,17,0) 70%)' }}></div>
-          <div className="pointer-events-none absolute -left-52 top-24 h-[640px] w-[640px] rounded-full opacity-60 blur-3xl" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(249,115,22,0.15), rgba(59,130,246,0.1) 45%, rgba(14,15,17,0) 72%)' }}></div>
+          <div className="pointer-events-none absolute -right-40 top-0 h-[720px] w-[720px] rounded-full opacity-70 blur-3xl transition-transform duration-700 ease-out" style={{ background: 'radial-gradient(circle at 55% 45%, rgba(227,74,50,0.45), rgba(240,120,70,0.2) 40%, rgba(244,245,245,0) 70%)' }}></div>
+          <div className="pointer-events-none absolute -left-52 top-24 h-[640px] w-[640px] rounded-full opacity-60 blur-3xl" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(46,48,52,0.25), rgba(120,124,130,0.1) 45%, rgba(244,245,245,0) 72%)' }}></div>
 
           {/* FLOATING NAV */}
           <div className="sticky top-3 sm:top-5 z-50 flex justify-center px-3 pt-4 sm:pt-6">
-            <nav className="flex w-full max-w-[940px] items-center justify-between rounded-full border border-white/10 bg-black/60 py-2.5 pl-5 pr-2.5 backdrop-blur-xl transition-shadow duration-500 shadow-[0_1px_0_rgba(255,255,255,0.1)_inset,0_10px_30px_-14px_rgba(0,0,0,0.5)]">
+            <nav className="flex w-full max-w-[940px] items-center justify-between rounded-full border border-white/70 bg-white/75 py-2.5 pl-5 pr-2.5 backdrop-blur-xl transition-shadow duration-500 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_10px_30px_-14px_rgba(35,36,39,0.15)]">
               <Link href="/" className="flex items-center gap-2.5">
                 <Logo className="w-6 h-6" />
-                <span className="text-base font-bold tracking-tight bg-gradient-to-r from-orange-400 to-amber-200 bg-clip-text text-transparent">Noviq</span>
+                <span className="text-base font-bold tracking-tight bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Noviq</span>
               </Link>
-              <div className="hidden md:flex items-center gap-1 text-sm font-medium text-gray-300">
-                <Link href="#services" className="rounded-full px-3.5 py-2 hover:bg-white/10 transition">
+              <div className="hidden md:flex items-center gap-1 text-sm font-medium text-[#4b4d52]">
+                <Link href="#services" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
                   Services
                 </Link>
-                <Link href="#portfolio" className="rounded-full px-3.5 py-2 hover:bg-white/10 transition">
+                <Link href="#portfolio" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
                   Portfolio
                 </Link>
-                <Link href="#why-choose-us" className="rounded-full px-3.5 py-2 hover:bg-white/10 transition">
+                <Link href="#why-choose-us" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
                   Why Us
                 </Link>
-                <Link href="#pricing" className="rounded-full px-3.5 py-2 hover:bg-white/10 transition">
+                <Link href="#pricing" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
                   Pricing
                 </Link>
-                <Link href="#about" className="rounded-full px-3.5 py-2 hover:bg-white/10 transition">
+                <Link href="#about" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
                   About
                 </Link>
-                <Link href="#blog" className="rounded-full px-3.5 py-2 hover:bg-white/10 transition">
+                <Link href="#blog" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
                   Blog
                 </Link>
               </div>
               <div className="flex items-center gap-2">
-                <Link href="#contact" className="group inline-flex items-center gap-1.5 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange-500 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_10px_22px_-10px_rgba(234,88,12,0.5)]">
+                <Link href="#contact" className="group inline-flex items-center gap-1.5 rounded-full bg-[#171719] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_10px_22px_-10px_rgba(23,23,25,0.7)]">
                   Hire Us
                   <ArrowRight className="h-4 w-4 opacity-0 -ml-4 transition-all duration-300 group-hover:opacity-100 group-hover:ml-0" strokeWidth={1.5} />
                 </Link>
@@ -96,41 +156,41 @@ export default function LandingPage() {
           {/* HERO CONTENT */}
           <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pb-20 pt-16 text-center sm:pt-24 lg:pb-28 flex-1 justify-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-sm font-medium text-orange-400 backdrop-blur shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-2 text-sm font-medium text-orange-600 backdrop-blur shadow-[0_6px_16px_-8px_rgba(35,36,39,0.25)]">
               <Sparkles className="h-4 w-4" strokeWidth={1.5} />
               Professional Production & Automation Agency
             </div>
 
             {/* Headline */}
             <div className="relative mt-7">
-              <h1 className="text-4xl font-bold leading-[1.05] sm:text-6xl lg:text-7xl tracking-tight">
+              <h1 className="text-4xl font-bold leading-[1.05] sm:text-6xl lg:text-7.5xl tracking-tight text-[#2E3034]">
                 Scale Your YouTube Channel
                 <br />
-                <span className="relative inline-block font-serif-accent text-orange-500" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }}>
+                <span className="relative inline-block font-serif-accent text-orange-600" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }}>
                   Without Doing The Work
                 </span>
               </h1>
             </div>
 
             {/* Subheadline */}
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-gray-400">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#55575c]">
               We handle scriptwriting, voiceovers, video editing, thumbnail design, and channel management so you can focus on growing your business.
             </p>
 
             {/* CTAs */}
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-              <Link href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-orange-600 px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange-500 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_20px_40px_-12px_rgba(234,88,12,0.5)]">
+              <Link href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-[#171719] px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_14px_28px_-12px_rgba(23,23,25,0.75)]">
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={1.5} />
               </Link>
-              <Link href="#portfolio" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5">
+              <Link href="#portfolio" className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/90 px-8 py-4 text-base font-semibold text-[#2E3034] transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_10px_22px_-12px_rgba(35,36,39,0.3)]">
                 View Portfolio
               </Link>
             </div>
             
             {/* Background Video Montage Placeholder / Interactive Preview */}
-            <div className="mt-16 w-full max-w-4xl aspect-video rounded-3xl border border-white/10 bg-white/5 overflow-hidden relative shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-t from-black/80 to-transparent">
+            <div className="mt-16 w-full max-w-4xl aspect-video rounded-3xl border border-black/5 bg-white p-2 shadow-[0_30px_60px_-15px_rgba(35,36,39,0.3)]">
+              <div className="w-full h-full rounded-2xl bg-gradient-to-tr from-gray-900 to-gray-800 flex flex-col items-center justify-center p-6 text-white relative overflow-hidden">
                 <Video className="w-16 h-16 text-orange-500 mb-4 animate-pulse" />
                 <span className="text-xl font-semibold">Video Montage Reel Playing</span>
                 <span className="text-sm text-gray-400 mt-2">Featuring professional edits, documentary clips, and motion dynamics.</span>

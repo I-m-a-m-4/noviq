@@ -206,13 +206,15 @@ export default function LandingPage() {
               </Link>
             </div>
             
-            {/* Background Video Montage Placeholder / Interactive Preview */}
-            <div className="mt-16 w-full max-w-4xl aspect-video rounded-3xl border border-black/5 bg-white p-2 shadow-[0_30px_60px_-15px_rgba(35,36,39,0.3)]">
-              <div className="w-full h-full rounded-2xl bg-gradient-to-tr from-gray-900 to-gray-800 flex flex-col items-center justify-center p-6 text-white relative overflow-hidden">
-                <Video className="w-16 h-16 text-orange-500 mb-4 animate-pulse" />
-                <span className="text-xl font-semibold">Video Montage Reel Playing</span>
-                <span className="text-sm text-gray-400 mt-2">Featuring professional edits, documentary clips, and motion dynamics.</span>
-              </div>
+            {/* Background Video Montage / Interactive Preview */}
+            <div className="mt-16 w-full max-w-4xl aspect-video rounded-3xl border border-black/5 bg-white p-2 shadow-[0_30px_60px_-15px_rgba(35,36,39,0.3)] overflow-hidden">
+              <iframe 
+                className="w-full h-full rounded-2xl"
+                src="https://www.youtube.com/embed/bVxlOrULRBc?autoplay=1&mute=1&loop=1&playlist=bVxlOrULRBc"
+                title="Noviq Agency Video Reel"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </section>

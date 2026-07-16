@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: 'Noviq | Video Editing & YouTube Automation Agency',
   description: 'We handle scriptwriting, voiceovers, video editing, thumbnail design, and channel management so you can focus on growing your business.',
   icons: {
-    icon: '/logo-premium.png',
-    shortcut: '/logo-premium.png',
-    apple: '/logo-premium.png',
+    icon: '/noviq-icon.png',
+    shortcut: '/noviq-icon.png',
+    apple: '/noviq-icon.png',
   },
 };
 

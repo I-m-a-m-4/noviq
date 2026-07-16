@@ -2,445 +2,306 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
 import { 
-  BookOpen, 
   ArrowRight, 
   Sparkles, 
   CheckCircle2, 
   Headphones, 
-  Target, 
   Clock, 
-  User, 
   Send,
   Zap,
   Users,
   MessageSquare,
   Heart,
-  RefreshCw,
-  Volume2
+  BookOpen,
+  Menu
 } from 'lucide-react';
 
 export default function LandingPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white selection:bg-primary/30 selection:text-primary">
-      
-      {/* Background Dot Grid Effect */}
-      <div className="fixed inset-0 pointer-events-none -z-20">
-        <div className="absolute inset-0 bg-dot-grid mask-arch-dots animate-dots opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-transparent opacity-60" />
-      </div>
+    <div className="min-h-screen bg-[#ECEDEE] text-[#232427] antialiased" style={{ fontFamily: 'Inter, sans-serif' }}>
+      {/* PAGE SHELL */}
+      <div className="max-w-[1440px] mx-auto px-2 sm:px-4 pt-2 sm:pt-4">
+        
+        {/* ================= HERO ================= */}
+        <section className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] bg-[#F4F5F5] shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_20px_60px_-30px_rgba(35,36,39,0.25)] min-h-[100svh] flex flex-col">
+          
+          {/* Atmosphere - Bloom effects */}
+          <div className="pointer-events-none absolute -right-40 top-0 h-[720px] w-[720px] rounded-full opacity-70 blur-3xl transition-transform duration-700 ease-out" style={{ background: 'radial-gradient(circle at 55% 45%, rgba(227,74,50,0.55), rgba(240,120,70,0.28) 40%, rgba(244,245,245,0) 70%)' }}></div>
+          <div className="pointer-events-none absolute -left-52 top-24 h-[640px] w-[640px] rounded-full opacity-60 blur-3xl" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(46,48,52,0.35), rgba(120,124,130,0.15) 45%, rgba(244,245,245,0) 72%)' }}></div>
+          <div className="pointer-events-none absolute right-1/4 -bottom-40 h-[420px] w-[560px] rounded-full opacity-40 blur-3xl" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(227,74,50,0.25), rgba(244,245,245,0) 70%)' }}></div>
 
-      {/* Background Component Glows */}
-      <div className="aura-background-component -z-10 w-full top-0 absolute h-[750px] opacity-40 pointer-events-none">
-        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Navigation */}
-      <header className="fixed z-50 bg-[#050505]/80 w-full border-white/5 border-b top-0 left-0 backdrop-blur-md">
-        <div className="flex px-6 h-16 max-w-7xl mx-auto items-center justify-between">
-          <div className="flex items-center gap-2 cursor-pointer group" role="button">
-            <Logo className="w-8 h-8" />
-            <span className="text-xl font-semibold tracking-tighter">Quran Circle</span>
+          {/* FLOATING NAV */}
+          <div className="sticky top-3 sm:top-5 z-50 flex justify-center px-3 pt-4 sm:pt-6">
+            <nav className="flex w-full max-w-[880px] items-center justify-between rounded-full border border-white/70 bg-white/75 py-2.5 pl-5 pr-2.5 backdrop-blur-xl transition-shadow duration-500 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_10px_30px_-14px_rgba(35,36,39,0.25)]">
+              <Link href="/" className="flex items-center gap-2.5">
+                <Logo className="w-6 h-6" />
+                <span className="text-base font-semibold">Quran Circle</span>
+              </Link>
+              <div className="hidden md:flex items-center gap-1 text-sm font-medium text-[#4b4d52]">
+                <Link href="#how-it-works" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
+                  How it Works
+                </Link>
+                <Link href="#features" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
+                  Features
+                </Link>
+                <Link href="#community" className="rounded-full px-3.5 py-2 hover:bg-black/5 transition">
+                  Community
+                </Link>
+              </div>
+              <div className="flex items-center gap-2">
+                <Link href="/signup" className="group hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#171719] px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_10px_22px_-10px_rgba(23,23,25,0.7)] hover:shadow-[0_1px_0_rgba(255,255,255,0.3)_inset,0_16px_28px_-10px_rgba(23,23,25,0.8)]">
+                  Join Now
+                  <ArrowRight className="h-4 w-4 opacity-0 -ml-4 transition-all duration-300 group-hover:opacity-100 group-hover:ml-0" strokeWidth={1.5} />
+                </Link>
+                <button className="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-white shadow-sm">
+                  <Menu className="h-5 w-5" strokeWidth={1.5} />
+                </button>
+              </div>
+            </nav>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <Link href="#how-it-works" className="hover:text-white transition-colors">How it Works</Link>
-            <Link href="#features" className="hover:text-white transition-colors">Features</Link>
-            <Link href="#community" className="hover:text-white transition-colors">Community</Link>
-          </nav>
+          {/* HERO CONTENT */}
+          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pb-28 pt-16 text-center sm:pt-24 lg:pb-36 flex-1 justify-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-2 text-sm font-medium text-[#E34A32] backdrop-blur shadow-[0_6px_16px_-8px_rgba(35,36,39,0.25)]">
+              <Sparkles className="h-4 w-4" strokeWidth={1.5} />
+              AI-Powered Quran Study
+            </div>
 
-          <div className="flex gap-4 items-center">
-            <Link href="/login" className="hover:text-white transition-colors hidden sm:block text-sm font-medium">Log in</Link>
-            <Link href="/signup">
-              <Button className="rounded-full px-6 bg-white text-black hover:bg-gray-200 h-9 font-medium">
-                Join Now
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+            {/* Headline */}
+            <div className="relative mt-7">
+              <h1 className="text-5xl font-semibold leading-[1.02] text-[#2E3034] sm:text-7xl lg:text-8xl" style={{ letterSpacing: '-0.035em' }}>
+                The Quran speaks
+                <br />
+                <span className="relative inline-block font-serif-accent" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }}>
+                  directly to you
+                  <span className="absolute -right-6 top-1/2 hidden h-16 w-40 -translate-y-1/2 translate-x-full rounded-full bg-gradient-to-br from-[#F05A3C] to-[#C93A24] opacity-90 blur-[1px] lg:block shadow-[0_20px_40px_-14px_rgba(227,74,50,0.6)]"></span>
+                </span>
+              </h1>
+            </div>
 
-      {/* Hero Section */}
-      <main className="overflow-hidden md:pt-44 pt-40 pb-0 relative">
-        <div className="z-10 text-left max-w-5xl mx-auto px-6 relative">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-primary mb-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <Sparkles className="w-3 h-3" />
-            <span>Powered by Gemini AI & the Quran Foundation API</span>
-          </div>
-
-          <h1 className="leading-[1.1] md:text-7xl lg:text-8xl text-5xl font-bold text-white tracking-tighter mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            The Quran speaks<br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">directly to your life.</span>
-          </h1>
-
-          <p className="md:text-2xl text-xl leading-relaxed font-medium text-gray-400 max-w-3xl mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-            Tell Quran Circle what&apos;s on your mind — finances, health, patience, purpose — and Gemini AI finds the exact Quranic verses that speak to your situation. Build a daily habit with friends who keep you accountable.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 mb-24 items-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-            <Link href="/signup">
-              <Button size="lg" className="h-14 px-10 rounded-full bg-primary text-black font-semibold hover:bg-primary/90 shadow-[0_15px_30px_-10px_rgba(255,196,56,0.3)]">
-                Start your journey <Send className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/login" className="hover:bg-white/5 transition-all flex text-sm font-medium text-gray-300 border border-white/10 rounded-full px-8 h-14 items-center gap-2 backdrop-blur-sm">
-              I already have an account <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-
-        {/* How it Works - 3 Step Flow */}
-        <section id="how-it-works" className="max-w-6xl mx-auto px-6 mt-20 mb-40 relative z-10">
-          <div className="text-center mb-20">
-            <p className="inline-flex items-center gap-2 uppercase text-xs font-medium text-white/60 tracking-widest font-mono mb-4">
-              <span className="w-1.5 h-1.5 animate-pulse bg-primary rounded-full shadow-[0_0_8px_rgba(255,196,56,0.8)]" />
-              How it works
+            {/* Paragraph */}
+            <p className="mt-10 max-w-xl text-lg leading-relaxed text-[#55575c]">
+              Tell Quran Circle what&apos;s on your mind — finances, health, patience, purpose — and Gemini AI finds the exact Quranic verses that speak to your situation.
             </p>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[1.1] mb-6">
-              Three steps to a<br /><span className="text-gray-500">meaningful Quran habit.</span>
+
+            {/* CTAs */}
+            <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+              <Link href="/signup" className="group inline-flex items-center gap-2 rounded-full bg-[#171719] px-7 py-3.5 text-base font-medium text-white transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_14px_28px_-12px_rgba(23,23,25,0.75)] hover:shadow-[0_1px_0_rgba(255,255,255,0.3)_inset,0_20px_34px_-12px_rgba(23,23,25,0.85)]">
+                Start your journey
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={1.5} />
+              </Link>
+              <Link href="/login" className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/90 px-7 py-3.5 text-base font-medium text-[#2E3034] transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_10px_22px_-12px_rgba(35,36,39,0.3)] hover:shadow-[0_16px_30px_-12px_rgba(35,36,39,0.35)]">
+                I already have an account
+              </Link>
+            </div>
+            
+            <div className="mt-14">
+              <p className="text-xs font-medium uppercase tracking-widest text-[#8a8c91]">
+                Powered by
+              </p>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[#55575c]">
+                <span className="text-lg font-semibold opacity-60">Gemini AI</span>
+                <span className="text-lg font-semibold opacity-60">Quran Foundation API</span>
+                <span className="text-lg font-semibold opacity-60">Firebase</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= HOW IT WORKS ================= */}
+        <section id="how-it-works" className="px-4 py-24 sm:px-10 lg:px-16 lg:py-32">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold text-[#E34A32]">How it works</p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#2E3034] sm:text-5xl" style={{ letterSpacing: '-0.035em' }}>
+              Three steps to a meaningful Quran habit.
             </h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#55575c]">
+              A simple daily practice that connects you with the Quran in a deeply personal way.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {/* Step 1 */}
-            <div className="group relative flex flex-col bg-gradient-to-b from-white/5 to-transparent rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-all">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm border border-primary/30">1</div>
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Your Niyyah</span>
-              </div>
-              <div className="flex-1 flex items-center justify-center py-8">
-                <div className="w-full max-w-[240px] bg-[#16181D] rounded-xl border border-white/10 p-4 shadow-2xl">
-                  <p className="text-[10px] text-gray-500 mb-2 font-medium">What&apos;s on your mind?</p>
-                  <p className="text-sm text-white font-medium">&quot;I want to find peace during financial hardship&quot;</p>
-                  <div className="mt-3 flex items-center gap-2">
-                    <div className="h-8 flex-1 bg-primary/20 rounded-lg flex items-center justify-center text-xs font-bold text-primary border border-primary/30">Craft Verses</div>
-                  </div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Share what&apos;s on your heart</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">Enter your intention, worry, or focus in plain words. No Islamic knowledge required — just honesty.</p>
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <Heart className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">Share your intention</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Enter what&apos;s on your heart — your worries, hopes, or focus areas — in plain words.
+              </p>
+              <p className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#F4F5F5] px-3 py-1.5 text-xs font-medium text-[#55575c]">
+                <Clock className="h-3.5 w-3.5" strokeWidth={1.5} />
+                Takes 2 minutes
+              </p>
             </div>
 
             {/* Step 2 */}
-            <div className="group relative flex flex-col bg-gradient-to-b from-white/5 to-transparent rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-all">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm border border-primary/30">2</div>
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">AI Matching</span>
-              </div>
-              <div className="flex-1 flex items-center justify-center py-8">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary/10 rounded-full blur-[40px] animate-pulse" />
-                  <div className="relative w-28 h-28 rounded-full bg-[#16181D] border border-white/10 flex items-center justify-center shadow-2xl">
-                    <Sparkles className="w-12 h-12 text-primary" />
-                  </div>
-                  <div className="absolute -top-2 -right-4 bg-[#1A1C20] border border-white/10 rounded-lg px-2 py-1 text-[9px] font-mono text-amber-400 shadow-lg">Gemini AI</div>
-                  <div className="absolute -bottom-2 -left-4 bg-[#1A1C20] border border-white/10 rounded-lg px-2 py-1 text-[9px] font-mono text-sky-400 shadow-lg">Quran API</div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Gemini finds your verses</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">Gemini AI searches across the entire Quran to find the verses most relevant to your specific situation.</p>
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <Sparkles className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">AI finds your verses</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Gemini AI searches the entire Quran to find verses most relevant to your situation.
+              </p>
+              <p className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#F4F5F5] px-3 py-1.5 text-xs font-medium text-[#55575c]">
+                <Zap className="h-3.5 w-3.5" strokeWidth={1.5} />
+                Instant matching
+              </p>
             </div>
 
             {/* Step 3 */}
-            <div className="group relative flex flex-col bg-gradient-to-b from-white/5 to-transparent rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-all">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm border border-primary/30">3</div>
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Your Session</span>
-              </div>
-              <div className="flex-1 flex items-center justify-center py-8">
-                <div className="w-full max-w-[240px] bg-[#16181D] rounded-xl border border-white/10 p-4 shadow-2xl space-y-3">
-                  <p className="text-right quran-text text-lg text-white leading-relaxed">وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ</p>
-                  <p className="text-[11px] text-gray-400 italic">&quot;And will provide for him from where he never expects...&quot;</p>
-                  <div className="flex items-center gap-2 pt-1">
-                    <div className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center"><Volume2 className="w-3 h-3 text-primary" /></div>
-                    <div className="flex-1 h-1 bg-white/10 rounded-full"><div className="h-full w-3/5 bg-primary/50 rounded-full" /></div>
-                  </div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Read, listen, and reflect</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">Study 5 personalized verses with Arabic text, verified translations, and audio from renowned Qaris.</p>
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <BookOpen className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">Read and reflect</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Study 5 personalized verses with Arabic text, translations, and audio recitation.
+              </p>
+              <p className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#F4F5F5] px-3 py-1.5 text-xs font-medium text-[#55575c]">
+                <Headphones className="h-3.5 w-3.5" strokeWidth={1.5} />
+                5 minutes daily
+              </p>
             </div>
           </div>
         </section>
 
-        {/* 4 Core Pillars */}
-        <section id="features" className="max-w-7xl mx-auto px-6 pt-24 pb-24 relative z-10">
-          <div className="max-w-4xl mb-24">
-            <p className="inline-flex items-center gap-2 uppercase text-xs font-medium text-white/60 tracking-widest font-mono mb-4">
-              <span className="w-1.5 h-1.5 animate-pulse bg-primary rounded-full shadow-[0_0_8px_rgba(255,196,56,0.8)]" />
-              Core Features
-            </p>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[1.1] mb-6">
-              Four pillars of<br /><span className="text-gray-500">Quranic engagement.</span>
+        {/* ================= FEATURES ================= */}
+        <section id="features" className="px-4 pb-24 sm:px-10 lg:px-16 lg:pb-32">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold text-[#E34A32]">Features</p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#2E3034] sm:text-5xl" style={{ letterSpacing: '-0.035em' }}>
+              Four pillars of Quranic engagement.
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
-              Quran Circle doesn&apos;t just show you random verses. It builds a complete ecosystem around daily reading, personal reflection, community accountability, and active memorization.
+            <p className="mt-4 text-lg leading-relaxed text-[#55575c]">
+              Quran Circle builds a complete ecosystem around daily reading, personal reflection, community accountability, and active memorization.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Pillar 1: Daily Reading */}
-            <div className="group flex flex-col overflow-hidden hover:border-white/20 transition-all duration-500 bg-gradient-to-b from-white/10 to-transparent rounded-3xl relative justify-between p-8 border border-white/5">
-              <div className="flex items-center gap-2 mb-6 text-xs font-mono text-gray-500 group-hover:text-primary transition-colors">
-                <BookOpen className="w-4 h-4" />
-                <span>Daily Reading</span>
-              </div>
-              <div className="relative flex-1 flex items-center justify-center py-6">
-                <div className="w-full max-w-xs space-y-3">
-                  <div className="bg-[#16181D] border border-white/10 rounded-xl p-4 shadow-2xl">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Zap className="w-4 h-4 text-amber-400" />
-                      <span className="text-xs font-bold text-amber-400">12 Day Streak</span>
-                    </div>
-                    <div className="flex gap-1">
-                      {Array.from({ length: 14 }).map((_, i) => (
-                        <div key={i} className={`w-full h-2 rounded-sm ${i < 12 ? 'bg-primary/60' : 'bg-white/5'}`} />
-                      ))}
-                    </div>
-                    <p className="text-[10px] text-gray-500 mt-3">Your longest streak yet. Keep going!</p>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center">
-                    <Clock className="w-3.5 h-3.5 text-gray-500" />
-                    <span className="text-xs text-gray-500">5 minutes a day is all it takes</span>
-                  </div>
-                </div>
-              </div>
-              <div className="relative z-10 mt-auto pt-4">
-                <h3 className="text-2xl font-bold text-white mb-3">A reason to open the Quran every day</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
-                  By matching verses to what you&apos;re personally going through, Quran Circle gives you a compelling reason to read — not out of obligation, but because the verses speak directly to your life.
-                </p>
-              </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Feature 1 */}
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <Zap className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">Daily Reading</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Build a consistent habit with personalized verses that speak to your daily life.
+              </p>
             </div>
 
-            {/* Pillar 2: Reflection */}
-            <div className="group flex flex-col overflow-hidden hover:border-white/20 transition-all duration-500 bg-gradient-to-b from-white/10 to-transparent rounded-3xl relative justify-between p-8 border border-white/5">
-              <div className="flex items-center gap-2 mb-6 text-xs font-mono text-gray-500 group-hover:text-primary transition-colors">
-                <Heart className="w-4 h-4" />
-                <span>Reflection</span>
-              </div>
-              <div className="relative flex-1 flex items-center justify-center py-6">
-                <div className="w-full max-w-xs space-y-2">
-                  <div className="bg-[#16181D] border border-white/10 rounded-xl p-4 shadow-2xl">
-                    <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-2 font-bold">Your Niyyah</p>
-                    <p className="text-sm text-white mb-3">&quot;I want to find patience during hardship&quot;</p>
-                    <div className="border-t border-white/5 pt-3 space-y-2">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                        <span className="text-[11px] text-gray-300">Al-Baqarah 2:153 — Patience & Prayer</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                        <span className="text-[11px] text-gray-300">Ash-Sharh 94:5 — Ease after hardship</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                        <span className="text-[11px] text-gray-300">Al-Baqarah 2:286 — Soul&apos;s capacity</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative z-10 mt-auto pt-4">
-                <h3 className="text-2xl font-bold text-white mb-3">The Quran as a living guide</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
-                  Enter what&apos;s weighing on your mind, and Gemini AI selects the most thematically relevant verses via the Quran Foundation API — turning the Quran into living guidance for real-life concerns.
-                </p>
-              </div>
+            {/* Feature 2 */}
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <Heart className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">Reflection</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Turn the Quran into living guidance for your real-life concerns and challenges.
+              </p>
             </div>
 
-            {/* Pillar 3: Community Learning */}
-            <div className="group flex flex-col overflow-hidden hover:border-white/20 transition-all duration-500 bg-gradient-to-b from-white/10 to-transparent rounded-3xl relative justify-between p-8 border border-white/5">
-              <div className="flex items-center gap-2 mb-6 text-xs font-mono text-gray-500 group-hover:text-primary transition-colors">
-                <Users className="w-4 h-4" />
-                <span>Community Learning</span>
-              </div>
-              <div className="relative flex-1 flex items-center justify-center py-6">
-                <div className="w-full max-w-xs space-y-2">
-                  <div className="bg-[#16181D] border border-white/10 rounded-xl p-4 shadow-2xl">
-                    <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/5">
-                      <div className="flex items-center gap-2">
-                        <Target className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-xs font-bold text-white">Faith Seekers</span>
-                      </div>
-                      <span className="text-[9px] text-gray-500 font-bold uppercase">3 of 4 done</span>
-                    </div>
-                    <div className="space-y-2.5">
-                      {[
-                        { name: 'You', streak: 12, done: true },
-                        { name: 'Sarah', streak: 8, done: true },
-                        { name: 'Omar', streak: 15, done: true },
-                        { name: 'Fatima', streak: 3, done: false },
-                      ].map((m, i) => (
-                        <div key={i} className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[8px] font-bold text-gray-300">{m.name[0]}</div>
-                            <span className="text-[11px] text-gray-300">{m.name}</span>
-                            {m.done && <CheckCircle2 className="w-3 h-3 text-green-500" />}
-                          </div>
-                          <span className="text-[9px] text-primary font-bold">{m.streak}d</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 pt-2 border-t border-white/5 flex items-center gap-2">
-                      <MessageSquare className="w-3 h-3 text-gray-500" />
-                      <span className="text-[10px] text-gray-500">Send a nudge to Fatima</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative z-10 mt-auto pt-4">
-                <h3 className="text-2xl font-bold text-white mb-3">Accountability that works</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
-                  Add friends by username, track each other&apos;s streaks, send nudges when someone falls behind, and chat together — turning solitary worship into a shared, motivating journey.
-                </p>
-              </div>
+            {/* Feature 3 */}
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <Users className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">Community</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Join circles of friends who keep each other accountable through shared goals.
+              </p>
             </div>
 
-            {/* Pillar 4: Memorization */}
-            <div className="group flex flex-col overflow-hidden hover:border-white/20 transition-all duration-500 bg-gradient-to-b from-white/10 to-transparent rounded-3xl relative justify-between p-8 border border-white/5">
-              <div className="flex items-center gap-2 mb-6 text-xs font-mono text-gray-500 group-hover:text-primary transition-colors">
-                <Headphones className="w-4 h-4" />
-                <span>Memorization</span>
+            {/* Feature 4 */}
+            <div className="group rounded-3xl border border-black/5 bg-white p-7 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_14px_30px_-18px_rgba(35,36,39,0.25)] hover:-translate-y-1 hover:shadow-[0_24px_44px_-18px_rgba(35,36,39,0.3)] transition-all duration-500">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4F5F5] border border-black/5 text-[#E34A32]">
+                <Headphones className="h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="mt-5 text-lg font-semibold">Memorization</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#55575c]">
+                Learn through listening with audio from renowned Qaris for every verse.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= COMMUNITY ================= */}
+        <section id="community" className="px-4 pb-24 sm:px-10 lg:px-16 lg:pb-32">
+          <div className="relative rounded-[32px] bg-[#F7F7F5] border border-white p-8 sm:p-12 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_20px_50px_-30px_rgba(35,36,39,0.3)]">
+            <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:items-center lg:-space-x-6">
+              <div className="flex-1 rounded-full border border-black/5 bg-white px-8 py-7 text-center shadow-[0_14px_30px_-16px_rgba(35,36,39,0.3)] lg:-rotate-[1deg]">
+                <p className="text-4xl font-semibold text-[#2E3034] sm:text-5xl">
+                  5
+                  <span className="text-[#E34A32]">minutes</span>
+                </p>
+                <p className="mt-1.5 text-base text-[#55575c]">
+                  daily reading time
+                </p>
               </div>
-              <div className="relative flex-1 flex items-center justify-center py-6">
-                <div className="w-full max-w-xs space-y-3">
-                  <div className="bg-[#16181D] border border-white/10 rounded-xl p-5 shadow-2xl text-center">
-                    <p className="quran-text text-2xl text-white leading-relaxed mb-3" dir="rtl">فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا</p>
-                    <p className="text-xs text-gray-400 italic mb-4">&quot;For indeed, with hardship [will be] ease.&quot;</p>
-                    <div className="flex items-center gap-3 justify-center">
-                      <button className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-                        <Volume2 className="w-4 h-4 text-primary" />
-                      </button>
-                      <div className="flex-1 h-1.5 bg-white/10 rounded-full max-w-[140px]">
-                        <div className="h-full w-2/3 bg-primary/60 rounded-full" />
-                      </div>
-                      <span className="text-[10px] text-gray-500 font-mono">0:04</span>
-                    </div>
-                    <p className="text-[9px] text-gray-600 mt-3 uppercase tracking-widest font-bold">Mahmoud Al-Husary</p>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center">
-                    <RefreshCw className="w-3 h-3 text-gray-500" />
-                    <span className="text-[10px] text-gray-500">Repeat to memorize</span>
-                  </div>
-                </div>
+              <div className="flex-1 rounded-full border border-black/5 bg-white px-8 py-7 text-center shadow-[0_14px_30px_-16px_rgba(35,36,39,0.3)] lg:z-10 lg:scale-105">
+                <p className="text-4xl font-semibold text-[#2E3034] sm:text-5xl">
+                  5
+                  <span className="text-[#E34A32]">verses</span>
+                </p>
+                <p className="mt-1.5 text-base text-[#55575c]">
+                  per personalized session
+                </p>
               </div>
-              <div className="relative z-10 mt-auto pt-4">
-                <h3 className="text-2xl font-bold text-white mb-3">Learn through listening</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
-                  Each session presents authentic Arabic text alongside verified English translations and integrated audio from renowned Qaris, supporting comprehension and memorization through repeated, focused listening.
+              <div className="flex-1 rounded-full border border-black/5 bg-white px-8 py-7 text-center shadow-[0_14px_30px_-16px_rgba(35,36,39,0.3)] lg:rotate-[1deg]">
+                <p className="text-4xl font-semibold text-[#2E3034] sm:text-5xl">
+                  1
+                  <span className="text-[#E34A32]">habit</span>
+                </p>
+                <p className="mt-1.5 text-base text-[#55575c]">
+                  that transforms your connection
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Social Proof / Testimonial-like section */}
-        <section id="community" className="max-w-7xl mx-auto px-6 mt-24 mb-32 relative z-10">
-          <div className="mb-20 text-center">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6 leading-[1.1]">
-              Built on trusted<br /><span className="text-gray-500">Islamic infrastructure.</span>
-            </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Every verse is fetched directly from the Quran Foundation API with verified Uthmani script. Translations are sourced from Saheeh International and other authenticated scholarly works. Audio recitations come from world-renowned Qaris.
-            </p>
-          </div>
+        {/* ================= FOOTER CTA ================= */}
+        <footer className="px-2 pb-2 sm:px-0 sm:pb-4">
+          <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] bg-[#F4F5F5] px-6 py-20 sm:px-12 lg:py-28 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_20px_60px_-30px_rgba(35,36,39,0.25)]">
+            <div className="pointer-events-none absolute -left-40 bottom-0 h-[520px] w-[520px] rounded-full opacity-60 blur-3xl" style={{ background: 'radial-gradient(circle, rgba(227,74,50,0.4), transparent 70%)' }}></div>
+            <div className="pointer-events-none absolute -right-40 -top-20 h-[420px] w-[420px] rounded-full opacity-40 blur-3xl" style={{ background: 'radial-gradient(circle, rgba(46,48,52,0.3), transparent 70%)' }}></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-b from-white/5 to-transparent rounded-2xl p-6 border border-white/5 text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Quran Foundation API</h3>
-              <p className="text-sm text-gray-400">Verified Uthmani script and authenticated translations for every verse served in the app.</p>
-            </div>
-            <div className="bg-gradient-to-b from-white/5 to-transparent rounded-2xl p-6 border border-white/5 text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                <Sparkles className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Gemini AI</h3>
-              <p className="text-sm text-gray-400">Google&apos;s Gemini intelligently matches your personal concerns to the most relevant Quranic passages.</p>
-            </div>
-            <div className="bg-gradient-to-b from-white/5 to-transparent rounded-2xl p-6 border border-white/5 text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                <Headphones className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Renowned Reciters</h3>
-              <p className="text-sm text-gray-400">Audio from Mahmoud Al-Husary, Mishary Alafasy, and other world-class Qaris for every verse.</p>
-            </div>
-          </div>
-        </section>
+            <div className="relative mx-auto max-w-3xl text-center">
+              <h2 className="text-4xl font-semibold leading-tight text-[#2E3034] sm:text-6xl" style={{ letterSpacing: '-0.035em' }}>
+                Start your Quran journey today.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-[#55575c]">
+                Join believers who use Quran Circle to build a consistent, meaningful relationship with the Quran — guided by AI, grounded in community.
+              </p>
 
-        {/* Final CTA Section */}
-        <section className="bg-gradient-to-b from-white/10 to-transparent w-full max-w-7xl rounded-[3rem] mt-24 mx-auto p-12 md:p-24 relative border border-white/10 text-center backdrop-blur-xl mb-40">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] -z-10" />
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-8">Start reading today.</h2>
-          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-medium">
-            Join believers who use Quran Circle to build a consistent, meaningful relationship with the Quran — guided by AI, grounded in community.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link href="/signup">
-              <Button size="lg" className="h-16 px-12 rounded-full bg-white text-black font-bold text-lg hover:bg-gray-200 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-                Start your journey — it&apos;s free
-              </Button>
-            </Link>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="border-t border-white/5 py-32 px-6 relative z-10 bg-gradient-to-b from-white/5 to-transparent">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-12 mb-20">
-              <div className="col-span-2 md:col-span-4 pr-8">
-                <div className="flex items-center gap-2 mb-6">
-                  <Logo className="w-8 h-8" />
-                  <span className="text-2xl font-bold tracking-tighter">Quran Circle</span>
-                </div>
-                <p className="text-sm text-gray-500 mb-8 leading-relaxed max-w-xs">
-                  An AI-powered Quran study companion that matches verses to your life. Built to help every Muslim build a lasting daily habit with the Book of Allah.
-                </p>
-              </div>
-              <div className="col-span-1 md:col-span-2">
-                <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest text-primary">Features</h4>
-                <ul className="space-y-4 text-sm text-gray-500">
-                  <li><Link href="#features" className="hover:text-white transition-colors">Daily Reading</Link></li>
-                  <li><Link href="#features" className="hover:text-white transition-colors">Reflection</Link></li>
-                  <li><Link href="#features" className="hover:text-white transition-colors">Community</Link></li>
-                  <li><Link href="#features" className="hover:text-white transition-colors">Memorization</Link></li>
-                </ul>
-              </div>
-              <div className="col-span-1 md:col-span-2">
-                <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest text-primary">Powered By</h4>
-                <ul className="space-y-4 text-sm text-gray-500">
-                  <li><span className="text-gray-400">Gemini AI</span></li>
-                  <li><span className="text-gray-400">Quran Foundation API</span></li>
-                  <li><span className="text-gray-400">Firebase</span></li>
-                </ul>
-              </div>
-              <div className="col-span-1 md:col-span-2">
-                <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest text-primary">Legal</h4>
-                <ul className="space-y-4 text-sm text-gray-500">
-                  <li><Link href="#" className="hover:text-white transition-colors">Privacy</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">Terms</Link></li>
-                </ul>
+              <div className="mx-auto mt-10 flex max-w-lg flex-col gap-3 sm:flex-row">
+                <Link href="/signup" className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#171719] px-7 py-3.5 text-base font-medium text-white transition-all duration-300 hover:-translate-y-0.5 shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_14px_28px_-12px_rgba(23,23,25,0.75)]">
+                  Start your journey — it&apos;s free
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={1.5} />
+                </Link>
               </div>
             </div>
-            <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-xs text-gray-600">© 2025 Quran Circle. Built for the sake of Allah.</p>
-              <div className="flex items-center gap-2">
-                <div className="relative flex items-center justify-center w-2 h-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 bg-amber-400" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500" />
-                </div>
-                <span className="text-xs font-medium text-gray-400">All systems operational</span>
+
+            <div className="relative mx-auto mt-16 flex max-w-5xl flex-col items-center justify-between gap-6 border-t border-black/5 pt-8 sm:flex-row text-center sm:text-left">
+              <Link href="/" className="flex items-center gap-2.5">
+                <Logo className="w-5 h-5" />
+                <span className="text-base font-semibold">Quran Circle</span>
+              </Link>
+              <div className="flex items-center gap-6 text-sm font-medium text-[#55575c] flex-wrap justify-center">
+                <Link href="#how-it-works" className="hover:text-[#232427]">How it Works</Link>
+                <Link href="#features" className="hover:text-[#232427]">Features</Link>
+                <Link href="#community" className="hover:text-[#232427]">Community</Link>
               </div>
+              <p className="text-xs text-[#8a8c91]">
+                © 2025 Quran Circle. Built for the sake of Allah.
+              </p>
             </div>
           </div>
         </footer>
-
-        {/* Gradient Overlay at bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-40 fade-overlay pointer-events-none z-20" />
-      </main>
+      </div>
     </div>
   );
 }

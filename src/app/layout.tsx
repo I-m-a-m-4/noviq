@@ -5,8 +5,8 @@ import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Quran Circle | Consistent Engagement',
-  description: 'Maintain a daily connection with the Quran through habit-building and accountability.',
+  title: 'Noviq | Video Editing & YouTube Automation Agency',
+  description: 'We handle scriptwriting, voiceovers, video editing, thumbnail design, and channel management so you can focus on growing your business.',
   icons: {
     icon: '/logo-premium.png',
     shortcut: '/logo-premium.png',

@@ -136,10 +136,8 @@
   transform: translateY(0) scale(1);
 }
 
-.quran-text {
-  font-family: 'Amiri', serif;
-  direction: rtl;
-}
+
+
 
 [style*="--border-gradient"]::before {
   content: "";

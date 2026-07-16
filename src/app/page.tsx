@@ -321,22 +321,22 @@ export default function LandingPage() {
             {/* Real Portfolio Item 1: Football Niche */}
             <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                  <Video className="w-10 h-10 text-orange-500 animate-pulse" />
-                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Football Niche</span>
+                <div className="aspect-video bg-gray-900 relative">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/bVxlOrULRBc"
+                    title="Football Niche"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold">Football & Sports Scripting</h3>
+                  <h3 className="text-lg font-bold">Football & Sports Niche</h3>
                   <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-                    Check out some of our most viral sports scripts and editing styles:
+                    High-retention sports scriptwriting and storytelling editing.
                   </p>
-                  <div className="mt-4 space-y-2">
-                    <a href="https://youtu.be/bVxlOrULRBc?si=baQ6Pg6J1rFxytQw" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Video: The Rise & Fall of Football Giants
-                    </a>
-                    <a href="https://youtu.be/6zGZKxfDo1s?si=ZhLVh9H4gdTDqQ1x" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Video: Champions League Tactical Edits
-                    </a>
+                  <div className="mt-4 space-y-1 text-xs text-gray-400">
+                    <span>• Views generated: 1M+</span>
                   </div>
                 </div>
               </div>
@@ -348,94 +348,95 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Real Portfolio Item 2: True Crime */}
+            {/* Real Portfolio Item 2: Canadian Politics */}
             <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                  <Video className="w-10 h-10 text-orange-500" />
-                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">True Crime Niche</span>
+                <div className="aspect-video bg-gray-900 relative">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/ZyTFvGK0OpI"
+                    title="Canadian Politics Niche"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold">True Crime Case Documentaries</h3>
+                  <h3 className="text-lg font-bold">Canadian Politics Niche</h3>
                   <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-                    High retention mystery and crime storytelling:
+                    Political narratives, scripting, and editorial layout structures.
                   </p>
-                  <div className="mt-4 space-y-2">
-                    <a href="https://docs.google.com/document/d/1HqcUZvAmgOnO3CKbtsjuJycbgP-vwnr8qwPvZK8jBVE/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Script: Case File #902
-                    </a>
-                    <a href="https://docs.google.com/document/d/1ZVgaWyg1Mx0BsNHEkPj-RPL7-5Yqvo-eeVedOawwBrQ/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Script: Solving The Unsolved
-                    </a>
+                  <div className="mt-4 space-y-1 text-xs text-gray-400">
+                    <span>• Niche: US & Canadian Politics</span>
                   </div>
                 </div>
               </div>
               <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Research</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Structure</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Real Portfolio Item 3: US Politics */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                  <Video className="w-10 h-10 text-orange-500" />
-                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Politics</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold">US & Canadian Politics</h3>
-                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-                    Highly analytical scripts and political documentaries:
-                  </p>
-                  <div className="mt-4 space-y-2">
-                    <a href="https://docs.google.com/document/d/1lnr3PvhObfFb_9tZg5R3UHgh4bZ0AUrpi7EZSl4c5l4/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Script: Election Debates analysis
-                    </a>
-                    <a href="https://youtu.be/ZyTFvGK0OpI?si=xBbdbCUl-2JrhB31" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Video: Canadian Politics Explained
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 pt-0">
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Scripts</span>
                   <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Analysis</span>
                 </div>
               </div>
             </div>
 
-            {/* Real Portfolio Item 4: Heavy Machinery */}
+            {/* Real Portfolio Item 3: Heavy Machinery */}
             <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                  <Video className="w-10 h-10 text-orange-500" />
-                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Machinery</span>
+                <div className="aspect-video bg-gray-900 relative">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/zwPQZXvPnKg"
+                    title="Heavy Machinery Niche"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold">Heavy Machinery & Agrotech</h3>
+                  <h3 className="text-lg font-bold">Heavy Machinery Niche</h3>
                   <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-                    Fascinating details on agricultural innovations:
+                    Agrotech machinery, industrial operations, and pacing systems.
                   </p>
-                  <div className="mt-4 space-y-2">
-                    <a href="https://youtu.be/zwPQZXvPnKg?si=FU2D-lbch9y8q9NW" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Video: Modern Agricultural Giants
-                    </a>
-                    <a href="https://youtu.be/lSgD0XKEXh8?si=wLHMyd25uOi5q4Xj" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
-                      → Video: Tree Felling Operations
-                    </a>
+                  <div className="mt-4 space-y-1 text-xs text-gray-400">
+                    <span>• Channel: highhosilver</span>
                   </div>
                 </div>
               </div>
               <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Voiceover</span>
                   <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Voicework</span>
                 </div>
               </div>
+            </div>
+
+            {/* Real Portfolio Item 4: Health Niche */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="aspect-video bg-gray-900 relative">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/E7KRTmxUc6o"
+                    title="Health Niche"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">Health & Medicine Niche</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    Informative scripts explaining body functions, diagnostics, and remedies.
+                  </p>
+                  <div className="mt-4 space-y-1 text-xs text-gray-400">
+                    <span>• Science & Medicine focus</span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 pt-0">
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Educational</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Pacing</span>
+                </div>
+              </div>
+            </div>
             </div>
 
             {/* Real Portfolio Item 5: Voice Over Samples */}

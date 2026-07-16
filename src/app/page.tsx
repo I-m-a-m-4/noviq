@@ -437,7 +437,6 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            </div>
 
             {/* Real Portfolio Item 5: Voice Over Samples */}
             <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">

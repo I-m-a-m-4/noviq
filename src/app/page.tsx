@@ -168,8 +168,26 @@ export default function LandingPage() {
                 <br />
                 <span className="relative inline-block font-serif-accent text-orange-600" style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }}>
                   Without Doing The Work
+                  <span className="absolute -right-6 top-1/2 hidden h-16 w-40 -translate-y-1/2 translate-x-full rounded-full bg-gradient-to-br from-[#F05A3C] to-[#C93A24] opacity-90 blur-[1px] lg:block shadow-[0_20px_40px_-14px_rgba(227,74,50,0.6)]"></span>
                 </span>
               </h1>
+
+              {/* Floating tiles */}
+              <div className="absolute -right-8 -top-10 hidden rotate-6 md:flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-black/5 shadow-[0_18px_35px_-14px_rgba(35,36,39,0.35)]">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-600 text-white">
+                  <Video className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+              </div>
+              <div className="absolute -right-24 top-16 hidden -rotate-6 lg:flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-black/5 shadow-[0_18px_35px_-14px_rgba(35,36,39,0.35)]" style={{ transitionDelay: '.2s' }}>
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500 text-white">
+                  <Layers className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+              </div>
+              <div className="absolute -bottom-14 right-6 hidden rotate-3 md:flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-black/5 shadow-[0_18px_35px_-14px_rgba(35,36,39,0.35)]" style={{ transitionDelay: '.4s' }}>
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F7F7F5] border border-black/10 text-orange-600">
+                  <Sparkles className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+              </div>
             </div>
 
             {/* Subheadline */}

@@ -232,71 +232,96 @@ export default function LandingPage() {
         </section>
 
         {/* ================= SERVICES ================= */}
-        <section id="services" className="px-4 py-16 sm:px-10 lg:px-16 bg-[#F4F5F5] rounded-[32px] border border-white shadow-sm">
-          <div className="max-w-2xl">
+        <section id="services" className="px-4 py-20 sm:px-10 lg:px-16 bg-[#F4F5F5] rounded-[32px] border border-white shadow-sm">
+          <div className="max-w-2xl text-left mb-12">
             <p className="text-sm font-semibold text-orange-600 uppercase tracking-wider">Services</p>
             <h2 className="mt-3 text-4xl font-bold leading-tight text-[#2E3034] sm:text-5xl">
-              Complete YouTube Operations.
+              LITTLE HELPERS FOR A<br />SMOOTHER CHANNEL
             </h2>
           </div>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {/* Service 1: YouTube Automation */}
-            <div className="group rounded-3xl border border-black/5 bg-white p-8 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
-                <Layers className="h-6 w-6" />
-              </span>
-              <h3 className="mt-6 text-xl font-bold">YouTube Automation</h3>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                We manage the entire content production process: topic research, scriptwriting, AI or human voiceovers, video editing, thumbnail design, and publishing support.
-              </p>
-              <div className="mt-6 border-t border-black/5 pt-4">
-                <span className="text-xs font-semibold text-gray-400 uppercase">Ideal for</span>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                  <li>• Entrepreneurs & Coaches</li>
-                  <li>• Investors</li>
-                  <li>• Content creators</li>
-                  <li>• Faceless YouTube channels</li>
-                </ul>
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Service card 1: YouTube Automation */}
+            <div className="group rounded-[32px] border border-black/5 bg-[#F9F9F8] p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 min-h-[300px]">
+              <div>
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+                    <Layers className="h-5 w-5" />
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#232427]">YouTube Automation</h3>
+                <p className="mt-3 text-gray-500 text-sm leading-relaxed max-w-sm">
+                  We manage the entire content production process: topic research, scriptwriting, voiceovers, video editing, thumbnail design, and publishing.
+                </p>
+              </div>
+              <div className="mt-6 flex justify-between items-center">
+                <span className="text-xs bg-orange-50 text-orange-600 px-3 py-1.5 rounded-full font-semibold">Full Production</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#171719] text-white hover:bg-orange-600 transition duration-300">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </div>
             </div>
 
-            {/* Service 2: Video Editing */}
-            <div className="group rounded-3xl border border-black/5 bg-white p-8 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
-                <Video className="h-6 w-6" />
-              </span>
-              <h3 className="mt-6 text-xl font-bold">Video Editing</h3>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                Professional editing for YouTube videos, Shorts, TikToks, Instagram Reels, Podcasts, and documentary-style productions. Complete with motion graphics, captions, sound design, color correction, and visual storytelling.
-              </p>
-              <div className="mt-6 border-t border-black/5 pt-4">
-                <span className="text-xs font-semibold text-gray-400 uppercase">Features included</span>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                  <li>• Motion graphics & Captions</li>
-                  <li>• Premium Sound design</li>
-                  <li>• Color correction</li>
-                  <li>• Visual storytelling pacing</li>
-                </ul>
+            {/* Service card 2: Video Editing */}
+            <div className="group rounded-[32px] border border-black/5 bg-[#F9F9F8] p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 min-h-[300px]">
+              <div>
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+                    <Video className="h-5 w-5" />
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#232427]">Professional Editing</h3>
+                <p className="mt-3 text-gray-500 text-sm leading-relaxed max-w-sm">
+                  Professional editing for YouTube, Shorts, TikTok, Podcasts, and documentary-style videos with motion graphics and sound design.
+                </p>
+              </div>
+              <div className="mt-6 flex justify-between items-center">
+                <span className="text-xs bg-orange-50 text-orange-600 px-3 py-1.5 rounded-full font-semibold">1080p & 4K</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#171719] text-white hover:bg-orange-600 transition duration-300">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </div>
             </div>
 
-            {/* Service 3: Thumbnail Design */}
-            <div className="group rounded-3xl border border-black/5 bg-white p-8 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
-                <MousePointerClick className="h-6 w-6" />
-              </span>
-              <h3 className="mt-6 text-xl font-bold">Thumbnail Design</h3>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                Increase click-through rates (CTR) with high-performing, attention-grabbing thumbnails designed following strict competitor research and A/B testing concepts.
-              </p>
-              <div className="mt-6 border-t border-black/5 pt-4">
-                <span className="text-xs font-semibold text-gray-400 uppercase">Our Process</span>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                  <li>• Competitor CTR research</li>
-                  <li>• A/B testing concepts</li>
-                  <li>• Contrast & visual psychology focus</li>
-                </ul>
+            {/* Service card 3: Thumbnail Design */}
+            <div className="group rounded-[32px] border border-black/5 bg-[#F9F9F8] p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 min-h-[300px]">
+              <div>
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+                    <MousePointerClick className="h-5 w-5" />
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#232427]">Thumbnail Design</h3>
+                <p className="mt-3 text-gray-500 text-sm leading-relaxed max-w-sm">
+                  Increase click-through rates with custom thumbnails designed to attract attention and drive views through A/B testing.
+                </p>
+              </div>
+              <div className="mt-6 flex justify-between items-center">
+                <span className="text-xs bg-orange-50 text-orange-600 px-3 py-1.5 rounded-full font-semibold">High CTR</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#171719] text-white hover:bg-orange-600 transition duration-300">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+            </div>
+
+            {/* Service card 4: Content Strategy */}
+            <div className="group rounded-[32px] border border-black/5 bg-[#F9F9F8] p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 min-h-[300px]">
+              <div>
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+                    <TrendingUp className="h-5 w-5" />
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#232427]">Channel Management</h3>
+                <p className="mt-3 text-gray-500 text-sm leading-relaxed max-w-sm">
+                  Full analytics review, SEO optimization, publishing support, and long term video strategic consulting.
+                </p>
+              </div>
+              <div className="mt-6 flex justify-between items-center">
+                <span className="text-xs bg-orange-50 text-orange-600 px-3 py-1.5 rounded-full font-semibold">Growth Strategy</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#171719] text-white hover:bg-orange-600 transition duration-300">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </div>
             </div>
           </div>

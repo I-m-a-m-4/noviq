@@ -309,105 +309,191 @@ export default function LandingPage() {
             </h2>
           </div>
 
+          {/* Categories Tab Navigation */}
+          <div className="flex flex-wrap gap-2.5 mb-10">
+            <span className="bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer">All Works</span>
+            <span className="bg-white border border-black/5 text-[#55575c] text-xs font-medium px-4 py-2 rounded-full hover:bg-black/5 transition cursor-pointer">Scripts</span>
+            <span className="bg-white border border-black/5 text-[#55575c] text-xs font-medium px-4 py-2 rounded-full hover:bg-black/5 transition cursor-pointer">Videos & Edits</span>
+            <span className="bg-white border border-black/5 text-[#55575c] text-xs font-medium px-4 py-2 rounded-full hover:bg-black/5 transition cursor-pointer">Voice Overs</span>
+          </div>
+
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Portfolio Item 1 */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                <Video className="w-10 h-10 opacity-30" />
-                <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Finance</span>
+            {/* Real Portfolio Item 1: Football Niche */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
+                  <Video className="w-10 h-10 text-orange-500 animate-pulse" />
+                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Football Niche</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">Football & Sports Scripting</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    Check out some of our most viral sports scripts and editing styles:
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <a href="https://youtu.be/bVxlOrULRBc?si=baQ6Pg6J1rFxytQw" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Video: The Rise & Fall of Football Giants
+                    </a>
+                    <a href="https://youtu.be/6zGZKxfDo1s?si=ZhLVh9H4gdTDqQ1x" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Video: Champions League Tactical Edits
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold">Finance Education Channel</h3>
-                <p className="text-sm text-orange-600 font-semibold mt-1">250,000+ views generated</p>
+              <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Scriptwriting</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Thumbnails</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Scripts</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Pacing</span>
                 </div>
               </div>
             </div>
 
-            {/* Portfolio Item 2 */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                <Video className="w-10 h-10 opacity-30" />
-                <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Sports</span>
+            {/* Real Portfolio Item 2: True Crime */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
+                  <Video className="w-10 h-10 text-orange-500" />
+                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">True Crime Niche</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">True Crime Case Documentaries</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    High retention mystery and crime storytelling:
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <a href="https://docs.google.com/document/d/1HqcUZvAmgOnO3CKbtsjuJycbgP-vwnr8qwPvZK8jBVE/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Script: Case File #902
+                    </a>
+                    <a href="https://docs.google.com/document/d/1ZVgaWyg1Mx0BsNHEkPj-RPL7-5Yqvo-eeVedOawwBrQ/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Script: Solving The Unsolved
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold">Football Shorts Channel</h3>
-                <p className="text-sm text-orange-600 font-semibold mt-1">1M+ views generated</p>
+              <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Research</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Captions</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Structure</span>
                 </div>
               </div>
             </div>
 
-            {/* Portfolio Item 3 */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                <Video className="w-10 h-10 opacity-30" />
-                <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Documentary</span>
+            {/* Real Portfolio Item 3: US Politics */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
+                  <Video className="w-10 h-10 text-orange-500" />
+                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Politics</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">US & Canadian Politics</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    Highly analytical scripts and political documentaries:
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <a href="https://docs.google.com/document/d/1lnr3PvhObfFb_9tZg5R3UHgh4bZ0AUrpi7EZSl4c5l4/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Script: Election Debates analysis
+                    </a>
+                    <a href="https://youtu.be/ZyTFvGK0OpI?si=xBbdbCUl-2JrhB31" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Video: Canadian Politics Explained
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold">Celebrity Biography Channel</h3>
-                <p className="text-sm text-orange-600 font-semibold mt-1">850,000+ views generated</p>
+              <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Research</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Sound Design</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Scripts</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Analysis</span>
                 </div>
               </div>
             </div>
 
-            {/* Portfolio Item 4 */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                <Video className="w-10 h-10 opacity-30" />
-                <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">True Crime</span>
+            {/* Real Portfolio Item 4: Heavy Machinery */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
+                  <Video className="w-10 h-10 text-orange-500" />
+                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Machinery</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">Heavy Machinery & Agrotech</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    Fascinating details on agricultural innovations:
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <a href="https://youtu.be/zwPQZXvPnKg?si=FU2D-lbch9y8q9NW" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Video: Modern Agricultural Giants
+                    </a>
+                    <a href="https://youtu.be/lSgD0XKEXh8?si=wLHMyd25uOi5q4Xj" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Video: Tree Felling Operations
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold">True Crime Case Files</h3>
-                <p className="text-sm text-orange-600 font-semibold mt-1">3.2M+ views generated</p>
+              <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Scriptwriting</span>
                   <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Voiceover</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Voicework</span>
                 </div>
               </div>
             </div>
 
-            {/* Portfolio Item 5 */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                <Video className="w-10 h-10 opacity-30" />
-                <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Technology</span>
+            {/* Real Portfolio Item 5: Voice Over Samples */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
+                  <Video className="w-10 h-10 text-orange-500" />
+                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Voice Over</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">VO Samples & Platforms</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    Listen to professional voice clips and browse profiles:
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <a href="https://www.voices.com/profile/kirranandrews" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Voices.com Profile
+                    </a>
+                    <a href="https://voice123.com/voice-actor/KirranAndrews/" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Voice123 Profile
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold">AI & Tech Review Hub</h3>
-                <p className="text-sm text-orange-600 font-semibold mt-1">450,000+ views generated</p>
+              <div className="p-6 pt-0">
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Narrative Voice</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Samples</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Real Portfolio Item 6: Drive Folders */}
+            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
+                  <Video className="w-10 h-10 text-orange-500" />
+                  <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Drive Folders</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold">Drive Portfolios</h3>
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    Direct access to sample folders of scripts, edits, and voiceovers:
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <a href="https://drive.google.com/drive/folders/1T758ijcGLV_3xIefgbfos0LgP7-m79cf" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Video Editing Drive Folder
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1ztZ-GcbpFYq-k7PQ0cBn77MrjsladtKx" target="_blank" rel="noopener noreferrer" className="block text-xs font-semibold text-orange-600 hover:underline">
+                      → Thumbnail Portfolio Folder
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 pt-0">
+                <div className="mt-4 flex flex-wrap gap-2">
                   <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Thumbnails</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Pacing strategy</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Portfolio Item 6 */}
-            <div className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="h-48 bg-gray-900 flex items-center justify-center text-white relative">
-                <Video className="w-10 h-10 opacity-30" />
-                <span className="absolute bottom-4 left-4 bg-orange-600 text-xs font-bold px-2.5 py-1 rounded-full">Business</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold">Startup Case Studies</h3>
-                <p className="text-sm text-orange-600 font-semibold mt-1">1.5M+ views generated</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Automation</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Editing</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Full production</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Video Files</span>
                 </div>
               </div>
             </div>

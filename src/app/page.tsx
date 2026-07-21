@@ -48,9 +48,9 @@ export default function LandingPage() {
   React.useEffect(() => {
     // WebGL Canvas Background Mesh Logic
     const canvas = document.getElementById('meshGL') as HTMLCanvasElement;
-    if (!canvas || !window.THREE) return;
+    if (!canvas || !(window as any).THREE) return;
 
-    const THREE = window.THREE;
+    const THREE = (window as any).THREE;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -226,7 +226,7 @@ export default function LandingPage() {
               What Do We Do?
             </h2>
             <p className="mt-6 text-lg sm:text-xl leading-relaxed text-gray-600">
-              We help creators, businesses, and brands grow on YouTube by providing professional video editing, YouTube automation, thumbnail design, content strategy, and channel management. Whether you&apos;re starting from scratch or scaling an existing channel, we handle the creative and technical work so you can focus on your business.
+              We help creators, businesses, and brands scale on YouTube. By handling scriptwriting, editing, thumbnails, and channel optimization, we manage the complete production workflow so you can focus on growth.
             </p>
           </div>
         </section>
@@ -536,7 +536,7 @@ export default function LandingPage() {
                 Built to Scale Channels Correctly.
               </h2>
               <p className="mt-6 text-[#55575c] leading-relaxed">
-                We combine creativity with proven YouTube strategies to produce content that is engaging, professional, and optimized for growth. Our workflow is built around quality, consistency, and clear communication. From compelling edits and high-performing thumbnails to organized production systems, we focus on delivering content that helps clients build their audience and achieve their goals.
+                We combine creative storytelling with data-backed strategies to produce content optimized for maximum viewer retention. Through premium editing, high-CTR thumbnails, and systematic production workflows, we help you build a loyal audience consistently.
               </p>
             </div>
 
@@ -575,8 +575,8 @@ export default function LandingPage() {
 
         {/* ================= RESULTS SECTION ================= */}
         <section className="px-4 py-16 sm:px-10 lg:px-16">
-          <div className="relative rounded-[32px] bg-[#0E0F11] text-white p-8 sm:p-12 shadow-2xl">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 text-center">
+          <div className="relative rounded-[32px] bg-[#0E0F11] text-white p-8 sm:p-12 shadow-2xl overflow-hidden bg-cover bg-center" style={{ backgroundImage: "linear-gradient(to right, rgba(14, 15, 17, 0.92), rgba(14, 15, 17, 0.85)), url('/studio_bg.png')" }}>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 text-center relative z-10">
               <div className="p-6">
                 <p className="text-5xl font-extrabold text-orange-500">500+</p>
                 <p className="mt-3 text-base text-gray-400 font-medium">Videos Edited</p>
@@ -702,18 +702,12 @@ export default function LandingPage() {
             <h2 className="mt-3 text-3xl font-bold leading-tight text-[#2E3034] sm:text-5xl text-center">
               Our Story
             </h2>
-            <div className="mt-8 space-y-6 text-gray-600 leading-relaxed">
+            <div className="mt-8 space-y-6 text-gray-600 leading-relaxed text-center">
               <p>
-                What started as a passion for video editing quickly became a mission to help creators tell better stories and grow their audiences. As we worked with different clients and content creators, we realized that many had great ideas but lacked the time, skills, or team needed to consistently produce high-quality YouTube content. That&apos;s where we stepped in.
+                What started as a passion for video editing evolved into a full-scale production agency dedicated to helping creators and brands tell better stories. We recognized that while many creators have incredible ideas, they often lack the time and resources required to produce professional, high-retention content consistently.
               </p>
               <p>
-                Over the years, we&apos;ve developed experience in YouTube content production, from researching topics and organizing content to editing engaging videos, designing eye-catching thumbnails, and optimizing content for audience retention. We&apos;ve worked on projects across multiple niches, helping creators transform ideas into professional videos that capture attention and keep viewers engaged.
-              </p>
-              <p>
-                Our experience spans a variety of niches, including celebrity documentaries, true crime, football and sports content, finance, educational videos, AI and technology, business, entertainment, and YouTube Shorts. This diverse background allows us to adapt our editing style and storytelling approach to suit different audiences and content goals.
-              </p>
-              <p>
-                Our mission is simple: to help creators, entrepreneurs, and businesses grow on YouTube by delivering high-quality content that educates, entertains, and inspires. We believe every creator deserves a reliable production partner who values quality, consistency, and long-term success.
+                Today, we support clients across diverse niches—including sports, documentary, finance, technology, and short-form content. By blending storytelling, data-backed optimization, and seamless workflow automation, we provide a reliable production partnership designed to scale your channel's authority and revenue.
               </p>
             </div>
           </div>
@@ -822,7 +816,7 @@ export default function LandingPage() {
 
         {/* ================= LEAD MAGNET ================= */}
         <section className="px-4 py-12 sm:px-10 lg:px-16">
-          <div className="bg-[#0E0F11] text-white p-8 sm:p-12 rounded-[32px] border border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden">
+          <div className="p-8 sm:p-12 rounded-[32px] border border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden bg-cover bg-center text-white" style={{ backgroundImage: "linear-gradient(to right, rgba(14, 15, 17, 0.94), rgba(14, 15, 17, 0.88)), url('/studio_bg.png')" }}>
             <div className="pointer-events-none absolute -right-20 -top-20 h-[300px] w-[300px] rounded-full opacity-40 blur-3xl" style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.4), transparent 70%)' }}></div>
             <div className="relative z-10 max-w-xl">
               <span className="text-orange-500 text-xs font-bold uppercase tracking-wider">Free Resource Download</span>
@@ -978,6 +972,42 @@ export default function LandingPage() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={1.5} />
                 </Link>
               </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="relative mx-auto mt-12 flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-4 border-t border-white/5 pt-8">
+              <a 
+                href="https://discord.com" 
+                className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 127.14 96.36" fill="currentColor">
+                  <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.95,54.65,1,77.53a107.53,107.53,0,0,0,32,16.29,80.7,80.7,0,0,0,6.83-11.11,68.8,68.8,0,0,1-10.75-5.17c.91-.66,1.8-1.34,2.66-2a77,77,0,0,0,60.85,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.75,5.17,81.13,81.13,0,0,0,6.83,11.11,107.53,107.53,0,0,0,32-16.29C129.66,48.24,123.39,25.42,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+                </svg>
+                <span>Discord: <strong className="font-semibold text-gray-300">noviq_studio</strong></span>
+              </a>
+              <a 
+                href="https://wa.me/917400860148"
+                className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.449 5.4 0 9.786-4.391 9.79-9.785.002-2.614-1.011-5.074-2.853-6.918-1.843-1.844-4.294-2.86-6.905-2.86-5.4 0-9.79 4.393-9.794 9.786-.002 1.532.41 3.03 1.193 4.343L1.58 20.53l4.067-1.376zm11.233-6.006c-.3-.15-1.772-.875-2.04-.972-.269-.099-.465-.148-.659.15-.195.297-.752.973-.924 1.17-.171.197-.341.221-.641.072-1.362-.68-2.316-1.189-3.238-2.78-.243-.417.243-.387.697-1.29.076-.15.038-.28-.019-.39-.056-.113-.465-1.121-.637-1.538-.168-.407-.35-.35-.465-.357-.12-.007-.257-.007-.395-.007s-.361.051-.55.257c-.189.206-.723.707-.723 1.724s.739 2.011.841 2.15c.103.14 1.455 2.22 3.525 3.114.492.213.876.34 1.176.435.495.158.946.135 1.3.083.397-.058 1.772-.724 2.022-1.424.25-.699.25-1.3.175-1.425-.075-.125-.275-.199-.575-.349z"/>
+                </svg>
+                <span>WhatsApp: <strong className="font-semibold text-gray-300">7400 860148</strong></span>
+              </a>
+              <a 
+                href="mailto:noviqsstudio@gmail.com"
+                className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <span>Email: <strong className="font-semibold text-gray-300">noviqsstudio@gmail.com</strong></span>
+              </a>
             </div>
 
             <div className="relative mx-auto mt-16 flex max-w-5xl flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row text-center sm:text-left">
